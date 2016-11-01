@@ -25,11 +25,13 @@ class AddPostForm extends React.Component {
 
   render() {
     return (
-      <form ref={(input) => this.postForm = input} onSubmit={(e) => this.createPost(e)}>
-        <input ref={(input) => this.title = input} type='text' placeholder='Post Title'/>
-        <textarea ref={(input) => this.body = input} placeholder='Your Text'></textarea>
-        <button type='submit'>Add Post</button>
-      </form>
+      <div>
+        <form ref={(input) => this.postForm = input} onSubmit={(e) => this.createPost(e)}>
+          <input ref={(input) => this.title = input} type='text' placeholder='Post Title'/>
+          <textarea ref={(input) => this.body = input} placeholder='Your Text'></textarea>
+          <button type='submit'>Add Post</button>
+        </form>
+      </div>
     )
   }
 }

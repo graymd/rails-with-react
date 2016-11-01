@@ -30,8 +30,9 @@ class RealApp extends Component {
   _buildPost = ({
     id,
     title,
-    body,
-  }) => {
+    body
+  }
+, index) => {
     return (
       <div key={id} >
         <h2>{title}</h2>
@@ -43,10 +44,14 @@ class RealApp extends Component {
   addPostToArray = (post) => {
     const posts = [ ...this.state.posts ];
     // posts.push(post);
-    console.log(`${Object.keys(posts)}`);
     posts.push(post);
-    console.log(`${Object.keys(posts)}`);
     this.setState( {posts, } );
+  }
+
+  updatePostToArray = (key, updatedPost) => {
+    const posts = [...this.state.posts];
+    posts[key] = updatedPost;
+    this.setState({posts, });
   }
 
   updatePosts = (e) => {
@@ -66,7 +71,9 @@ class RealApp extends Component {
   render () {
     return (
       <div >
-        <AddPostForm addPostToArray={this.addPostToArray}/>
+        <AddPostForm
+         posts={this.state.posts}
+         addPostToArray={this.addPostToArray} updatePost={this.updatePostToArray}/>
         {/* <h1>
           {this.state.posts.map((post) =>
             (this._buildPost(post)))}
@@ -77,7 +84,7 @@ class RealApp extends Component {
         <button onClick={this.updatePosts}>
           Click Me!
         </button>
-        {this.state.posts.map((post) => (this._buildPost(post))).reverse()}
+        {this.state.posts.map(this._buildPost).reverse()}
 
       </div>
     );

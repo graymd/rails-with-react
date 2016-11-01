@@ -27,6 +27,7 @@ module Api
 
       def build_post(post)
         {
+          id: post.id,
           title: post.title,
           body: post.body
         }
